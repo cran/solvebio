@@ -1,6 +1,9 @@
-# SolveBio for R (alpha)
+# SolveBio for R
 
 **PLEASE NOTE: The SolveBio R Bindings are currently in alpha. The bindings may change frequently so please check back for updates.**
+
+[![Build Status](https://travis-ci.org/solvebio/solvebio-r.png?branch=master)](https://travis-ci.org/solvebio/solvebio-r)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/solvebio)](https://cran.r-project.org/package=solvebio)
 
 This package contains the SolveBio R language bindings. SolveBio makes it easy
 to access genomic reference data.
@@ -41,11 +44,10 @@ library(solvebio)
 ## Usage
 
 ```R
-# Create the client
 # By default it will look for a key in the $SOLVEBIO_API_KEY environment variable.
 require(solvebio)
-# You may also manually supply an API key in your code
-# login(api_key="<Your SolveBio API key>")
+# You may also supply an API key in your code
+login(api_key="<Your SolveBio API key>")
 
 # Retrieve a list of all datasets
 datasets = Dataset.all()
@@ -56,17 +58,13 @@ dataset = Dataset.retrieve('ClinVar/Variants')
 # Query a dataset with filters as JSON:
 filters = '[["gene_symbol", "BRCA1"]]'
 # or, filters as R code:
-filters = list(list('gene_symbol', 'BRCA1'))
+filters = list(list('gene_symbol', 'BRCA1'), list('clinical_significance',
+'Benign'))
 
-# Execute the query
-response = Dataset.query('ClinVar/3.7.2-2016-08-02/Variants', filters=filters, offset=0, limit=50)
+# Execute the queries
+# NOTE: paginate=TRUE may issue multiple requests, depending on the dataset and filters
+results = Dataset.query('ClinVar/3.7.2-2016-08-02/Variants', filters=filters, limit=1000, paginate=TRUE)
 # Access the results (flattened by default)
-response
-
-# Load the next page of results
-# reponse$offset will be NULL if there are no more results.
-if (!is.null(response$offset)) {
-    response = Dataset.query('ClinVar/3.7.2-2016-08-02/Variants', filters=filters, offset=response$offset)
-}
+results
 
 ```
