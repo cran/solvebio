@@ -21,7 +21,7 @@ DatasetImport.all <- function(...) {
 #'
 #' Retrieves the metadata about a specific dataset import on SolveBio.
 #'
-#' @param id String The ID or full name of a SolveBio dataset import.
+#' @param id String The ID of a SolveBio dataset import.
 #'
 #' @examples \dontrun{
 #' DatasetImport.retrieve(<ID>)
@@ -41,13 +41,35 @@ DatasetImport.retrieve <- function(id) {
 }
 
 
+#' DatasetImport.delete
+#'
+#' Deletes a specific dataset import on SolveBio.
+#'
+#' @param id String The ID of a SolveBio dataset import.
+#'
+#' @examples \dontrun{
+#' DatasetImport.delete(<ID>)
+#' }
+#'
+#' @references
+#' \url{https://docs.solvebio.com/}
+#'
+#' @export
+DatasetImport.delete <- function(id) {
+    if (missing(id)) {
+        stop("A dataset import ID is required.")
+    }
+
+    path <- paste("v1/dataset_imports", paste(id), sep="/")
+    .request('DELETE', path=path)
+}
+
+
 #' DatasetImport.create
 #'
-#' Create a new dataset import.
+#' Create a new dataset import. Either an upload_id, manifest, or data_records is required.
 #'
 #' @param dataset_id The target dataset ID.
-#' @param upload_id An upload ID
-#' @param manifest (optional) A valid file manifest (alternative to upload_id).
 #' @param commit_mode (optional) The commit mode (default: append).
 #' @param auto_approve (optional) Automatically approve the commit (default: TRUE).
 #' @param ... (optional) Additional dataset import attributes.
@@ -62,8 +84,6 @@ DatasetImport.retrieve <- function(id) {
 #' @export
 DatasetImport.create <- function(
                                  dataset_id,
-                                 upload_id,
-                                 manifest=NULL,
                                  commit_mode='append',
                                  auto_approve=TRUE,
                                  ...) {
@@ -71,17 +91,8 @@ DatasetImport.create <- function(
         stop("A dataset ID is required.")
     }
 
-    if (missing(upload_id)) {
-        if (is.null(manifest)) {
-            stop("Either an upload ID or manifest is required.")
-        }
-        upload_id = NULL
-    }
-
     params = list(
                   dataset_id=dataset_id,
-                  upload_id=upload_id,
-                  manifest=manifest,
                   commit_mode=commit_mode,
                   auto_approve=auto_approve,
                   ...

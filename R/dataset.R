@@ -39,6 +39,31 @@ Dataset.retrieve <- function(id) {
     .request('GET', path=path)
 }
 
+
+#' Dataset.delete
+#'
+#' Delete a specific dataset from SolveBio.
+#'
+#' @param id String The ID or full name of a SolveBio dataset
+#'
+#' @examples \dontrun{
+#' Dataset.delete("1")
+#' }
+#'
+#' @references
+#' \url{https://docs.solvebio.com/}
+#'
+#' @export
+Dataset.delete <- function(id) {
+    if (missing(id)) {
+        stop("A dataset ID or name is required.")
+    }
+
+    path <- paste("v1/datasets", paste(id), sep="/")
+    .request('DELETE', path=path)
+}
+
+
 #' Dataset.data
 #'
 #' Returns one page of documents from a SolveBio dataset and processes the response.
@@ -55,7 +80,7 @@ Dataset.retrieve <- function(id) {
 #'
 #' @export
 Dataset.data <- function(id, filters, ...) {
-    if (missing(id) | !(class(id) %in% c("Dataset", "numeric", "character"))) {
+    if (missing(id) | !(class(id) %in% c("Dataset", "numeric", "integer", "character"))) {
         stop("A dataset ID or name is required.")
     }
     if (class(id) == "Dataset") {
