@@ -1,7 +1,7 @@
 Package: solvebio
 Type: Package
-Title: The Official SolveBio API Client for R
-Version: 2.0.1
+Title: The Official SolveBio API Client
+Version: 2.0.2
 Date: 2017-07-28
 Author: David Caplan
 Maintainer: David Caplan <dcaplan@solvebio.com>
@@ -18,6 +18,6 @@ Collate: solvebio.R annotation.R dataset.R dataset_commit.R
         dataset_migration.R object.R upload.R utils.R vault.R zzz.R
 RoxygenNote: 6.0.1
 NeedsCompilation: no
-Packaged: 2017-08-05 15:51:15 UTC; david
+Packaged: 2017-08-25 18:59:33 UTC; david
 Repository: CRAN
-Date/Publication: 2017-08-05 17:20:08 UTC
+Date/Publication: 2017-08-25 19:05:00 UTC
