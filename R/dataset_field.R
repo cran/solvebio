@@ -2,6 +2,7 @@
 #'
 #' Retrieves the metadata about all dataset fields on SolveBio.
 #'
+#' @param env (optional) Custom client environment.
 #' @param ... (optional) Additional query parameters (e.g. page).
 #'
 #' @examples \dontrun{
@@ -12,15 +13,17 @@
 #' \url{https://docs.solvebio.com/}
 #'
 #' @export
-DatasetField.all <- function(...) {
-    .request('GET', "v2/dataset_fields", query=list(...))
+DatasetField.all <- function(env = solvebio:::.solveEnv, ...) {
+    .request('GET', "v2/dataset_fields", query=list(...), env=env)
 }
+
 
 #' DatasetField.retrieve
 #'
 #' Retrieves the metadata about a specific dataset field.
 #'
 #' @param id String The ID of a dataset field.
+#' @param env (optional) Custom client environment.
 #'
 #' @examples \dontrun{
 #' DatasetField.retrieve(691)
@@ -30,20 +33,22 @@ DatasetField.all <- function(...) {
 #' \url{https://docs.solvebio.com/}
 #'
 #' @export
-DatasetField.retrieve <- function(id) {
+DatasetField.retrieve <- function(id, env = solvebio:::.solveEnv) {
     if (missing(id)) {
         stop("A dataset field ID is required.")
     }
 
     path <- paste("v2/dataset_fields", paste(id), sep="/")
-    .request('GET', path=path)
+    .request('GET', path=path, env=env)
 }
+
 
 #' DatasetField.facets
 #'
 #' Returns the facets for a given dataset field.
 #'
 #' @param id String The ID of a dataset field.
+#' @param env (optional) Custom client environment.
 #' @param ... (optional) Additional query parameters.
 #'
 #' @examples \dontrun{
@@ -54,7 +59,7 @@ DatasetField.retrieve <- function(id) {
 #' \url{https://docs.solvebio.com/}
 #'
 #' @export
-DatasetField.facets <- function(id, ...) {
+DatasetField.facets <- function(id, env = solvebio:::.solveEnv, ...) {
     if (missing(id) | !(class(id) %in% c("DatasetField", "numeric", "character"))) {
         stop("A dataset field ID is required.")
     }
@@ -63,7 +68,7 @@ DatasetField.facets <- function(id, ...) {
     }
 
     path <- paste("v2/dataset_fields", paste(id), "facets", sep="/")
-    .request('GET', path=path, query=list(...))
+    .request('GET', path=path, query=list(...), env=env)
 }
 
 
@@ -74,6 +79,7 @@ DatasetField.facets <- function(id, ...) {
 #' @param dataset_id The dataset ID.
 #' @param name The name of the dataset field.
 #' @param data_type (optional) The data type for the field (default: auto).
+#' @param env (optional) Custom client environment.
 #' @param ... (optional) Additional dataset import attributes.
 #'
 #' @examples \dontrun{
@@ -84,7 +90,7 @@ DatasetField.facets <- function(id, ...) {
 #' \url{https://docs.solvebio.com/}
 #'
 #' @export
-DatasetField.create <- function(dataset_id, name, data_type='auto', ...) {
+DatasetField.create <- function(dataset_id, name, data_type = 'auto', env = solvebio:::.solveEnv, ...) {
     if (missing(dataset_id)) {
         stop("A dataset ID is required.")
     }
@@ -99,7 +105,38 @@ DatasetField.create <- function(dataset_id, name, data_type='auto', ...) {
                   ...
                   )
 
-    dataset_field <- .request('POST', path='v2/dataset_fields', query=NULL, body=params)
+    dataset_field <- .request('POST', path='v2/dataset_fields', query=NULL, body=params, env=env)
 
     return(dataset_field)
+}
+
+
+#' DatasetField.update
+#'
+#' Updates the attributes of an existing dataset field. NOTE: The data_type of a field cannot be changed.
+#'
+#' @param id The ID of the dataset field to update.
+#' @param env (optional) Custom client environment.
+#' @param ... Dataset field attributes to change.
+#'
+#' @examples \dontrun{
+#' DatasetField.update(
+#'                     id="1234",
+#'                     title="New Field Title"
+#'                    )
+#' }
+#'
+#' @references
+#' \url{https://docs.solvebio.com/}
+#'
+#' @export
+DatasetField.update <- function(id, env = solvebio:::.solveEnv, ...) {
+    if (missing(id)) {
+        stop("A dataset field ID is required.")
+    }
+
+    params = list(...)
+
+    path <- paste("v2/dataset_fields", paste(id), sep="/")
+    .request('PATCH', path=path, query=NULL, body=params, env=env)
 }
