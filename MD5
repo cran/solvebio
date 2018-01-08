@@ -1,7 +1,7 @@
-5ca4a50029180252f414e37a23241b08 *DESCRIPTION
+80f0c5312d0ba322f13d485d4beffc97 *DESCRIPTION
 37b74b2985bc658faf5e8295400fef17 *LICENSE
 5922217fca158ff21d6f6cfeec4cb535 *NAMESPACE
-0c4424208f9cec361090c3633dae639a *NEWS.md
+3b1ed3fbf1abc5660752e60c01cbba91 *NEWS.md
 b00b99a87808a5230652a1b3c5765141 *R/annotation.R
 7b0d408bdf0bfe064fafb5c1dfa5a250 *R/application.R
 2d7cfb2d6b50816d538f881d76fbd76f *R/beacon.R
@@ -13,7 +13,7 @@ f5a255b2877f61e885c965a7275030f3 *R/dataset_field.R
 d8c07c1416e8f01e4377746778e4e415 *R/dataset_import.R
 2fb0b8b594000b1de65ebbc1ad0488ba *R/dataset_migration.R
 df88c729b35e9cec12067e8204c86dfb *R/object.R
-fa22e2b70f9a8ba639a5cde82aef0ca3 *R/shiny.R
+e00ce850e80714c6104e99db33f840f3 *R/shiny.R
 390ebaa90a72e806bb43ed5d74c0013a *R/solvebio.R
 bd5a5d4ca8f51927d0c3807a574704ff *R/user.R
 df218d4e031523045837bff39a91c3b5 *R/utils.R
@@ -98,7 +98,7 @@ b4af0dd47665e02f75890724c7ee8b27 *man/Vault.search.Rd
 50d760370f08e8da39c160abe546f32d *man/Vault.update.Rd
 7a82bd4e0ccf90c85ef7422a7f75d4aa *man/createEnv.Rd
 65552eaa3ef3d88cc2cd1133db8761a0 *man/login.Rd
-36e60aae62847dbc9199ff292a500e11 *man/protectedServer.Rd
+3d4842a3e85ae4cef65c74ca6a5e91ee *man/protectedServer.Rd
 1fde62da282ebca52ef538da8d66af72 *tests/testthat.R
 b69d6fe8da6a2f9b2afe18c730ca953d *tests/testthat/helpers.R
 2b22354e4896a7fa058b2199f332077b *tests/testthat/test_env.R
