@@ -157,23 +157,8 @@ Vault.get_by_full_path <- function(full_path, verbose=TRUE, env = solvebio:::.so
         stop("A vault full path is required.")
     }
 
-    split_path = strsplit(full_path, ":", fixed=TRUE)[[1]]
-
-    if (length(split_path) == 1) {
-        # Get the user"s account for them
-        user = User.retrieve(env=env)
-        account_domain = user$account$domain
-        name = split_path[[1]]
-    }
-    if (length(split_path) == 2) {
-        # Full path is provided
-        account_domain = split_path[[1]]
-        name = split_path[[2]]
-    }
-
     params = list(
-                  account_domain=account_domain,
-                  name=name
+                  full_path=full_path
                   )
     response = .request("GET", path="v2/vaults", query=params, env=env)
 
@@ -219,6 +204,8 @@ Vault.get_or_create_by_full_path <- function(full_path, env = solvebio:::.solveE
         return(vault)
     }
 
+    # Remove any object path and trailing colon if it exists
+    full_path <- sub(":?/.*", "", full_path)
     split_path = strsplit(full_path, ":")[[1]]
     name = split_path[length(split_path)]
     vault = Vault.create(name=name, env=env, ...)
@@ -393,6 +380,9 @@ Vault.create_dataset <- function(id, path, name, env = solvebio:::.solveEnv, ...
     if (missing(id)) {
         stop("A vault ID is required.")
     }
+    if (missing(name)) {
+        stop("A dataset name is required.")
+    }
 
     vault = Vault.retrieve(id, env=env)
 
@@ -493,11 +483,16 @@ Vault.create_folder <- function(id, path, recursive=FALSE, env = solvebio:::.sol
     else {
         # Find the parent object (folder) at the provided path
         parent_path = paste(parents, collapse="/")
-        parent_object = Object.get_by_path(parent_path, vault_id=vault$id, env=env)
-        if (is.null(parent_object) || parent_object$object_type != 'folder') {
-            stop(sprintf("Invalid path: existing object at '%s' is not a folder\n", parent_object))
+        if (parent_path == "") {
+            parent_object_id = NULL
         }
-        parent_object_id = parent_object$id
+        else {
+            parent_object = Object.get_by_path(parent_path, vault_id=vault$id, env=env)
+            if (is.null(parent_object) || parent_object$object_type != 'folder') {
+                stop(sprintf("Invalid path: existing object at '%s' is not a folder\n", parent_object))
+            }
+            parent_object_id = parent_object$id
+        }
     }
 
     object = Object.create(
