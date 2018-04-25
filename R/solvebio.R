@@ -115,7 +115,7 @@ createEnv <- function(token, token_type="Token", host="https://api.solvebio.com"
 
     if (content_type == "application/json") {
         if (!missing(body)) {
-            body <- jsonlite::toJSON(body, auto_unbox=TRUE)
+            body <- jsonlite::toJSON(body, auto_unbox=TRUE, null="null")
         } else {
             body = NULL
         }
@@ -192,12 +192,17 @@ createEnv <- function(token, token_type="Token", host="https://api.solvebio.com"
             stop(sprintf("API error: Too many requests, please retry in %i seconds\n", res$header$'retry-after')) 
         }
         if (res$status == 400) {
-            content = formatSolveBioResponse(res, raw = FALSE)
-            if (!is.null(content$detail)) {
-                stop(sprintf("API error: %s\n", content$detail))
-            } else {
-                stop(sprintf("API error: %s\n", content))
-            }
+            tryCatch({
+                content = formatSolveBioResponse(res, raw = FALSE)
+                if (!is.null(content$detail)) {
+                    stop(sprintf("API error: %s\n", content$detail))
+                } else {
+                    stop(sprintf("API error: %s\n", content))
+                }
+            }, error = function(e) {
+                cat(sprintf("Error parsing API response\n"))
+                stop(res)
+            })
         }
         if (res$status == 401) {
             stop(sprintf("Invalid API key or access token (error %s)\n", res$status))
