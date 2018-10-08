@@ -1,7 +1,7 @@
-2cf6e3c42dd6f231ec8c4bb3af9cec28 *DESCRIPTION
+a4581682083f18f4a8512263b17e8927 *DESCRIPTION
 37b74b2985bc658faf5e8295400fef17 *LICENSE
-565fd2033e9f296b166980cca1b3bd8a *NAMESPACE
-630dc9aa70662682625f5ad1b502c6da *NEWS.md
+35dba9b623e83e7dcd4a47208395334d *NAMESPACE
+46e7038c86a3ca5f11dcdab7136b6b2d *NEWS.md
 b00b99a87808a5230652a1b3c5765141 *R/annotation.R
 7b0d408bdf0bfe064fafb5c1dfa5a250 *R/application.R
 2d7cfb2d6b50816d538f881d76fbd76f *R/beacon.R
@@ -14,14 +14,14 @@ d8c07c1416e8f01e4377746778e4e415 *R/dataset_import.R
 2fb0b8b594000b1de65ebbc1ad0488ba *R/dataset_migration.R
 0d1a7acdea96686986138ce0cf37113c *R/dataset_template.R
 de56e67c1ea989126e2f01f463f3973c *R/object.R
-e00ce850e80714c6104e99db33f840f3 *R/shiny.R
+dfc08c011a8e6b810809af9fc2725063 *R/shiny.R
 73dbb7ee9d5ca70a8cc3c57a77ddec08 *R/solvebio.R
 73e0a90a1bad3fb68f13988cbd2f4bcd *R/task.R
 bd5a5d4ca8f51927d0c3807a574704ff *R/user.R
 4408eba7f1f9bbffe09ed2acdea803e7 *R/utils.R
 f03d98abd15e5bb0173c649c238c9e18 *R/vault.R
 f00a5ada0e2830267578d4013f80611b *R/zzz.R
-1c3926fff934068c47985cae225d1b49 *README.md
+0fa6e8ec5c5d051e05da484f8b2f4427 *README.md
 5302624a2c07069af679f9f02486a911 *man/Annotator.annotate.Rd
 63ca4b4c1479be1fff08a5f41157854e *man/Application.all.Rd
 2785444d57e6a9488ed4164ee3d5bc9e *man/Application.create.Rd
@@ -112,7 +112,8 @@ b4af0dd47665e02f75890724c7ee8b27 *man/Vault.search.Rd
 50d760370f08e8da39c160abe546f32d *man/Vault.update.Rd
 7a82bd4e0ccf90c85ef7422a7f75d4aa *man/createEnv.Rd
 65552eaa3ef3d88cc2cd1133db8761a0 *man/login.Rd
-3d4842a3e85ae4cef65c74ca6a5e91ee *man/protectedServer.Rd
+acbdfbd09c5d4a9a5107fe7425461e36 *man/protectedServer.Rd
+7c329c8710fda08cd7dc84ac3334b7f8 *man/protectedServerJS.Rd
 1fde62da282ebca52ef538da8d66af72 *tests/testthat.R
 b69d6fe8da6a2f9b2afe18c730ca953d *tests/testthat/helpers.R
 2b22354e4896a7fa058b2199f332077b *tests/testthat/test_env.R
