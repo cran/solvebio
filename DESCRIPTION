@@ -1,8 +1,8 @@
 Package: solvebio
 Type: Package
 Title: The Official SolveBio API Client
-Version: 2.8.0
-Date: 2020-06-24
+Version: 2.9.0
+Date: 2020-08-04
 Author: David Caplan
 Maintainer: David Caplan <dcaplan@solvebio.com>
 Description: R language bindings for SolveBio's API.
@@ -18,9 +18,9 @@ Collate: solvebio.R annotation.R application.R beacon.R beacon_set.R
         dataset_import.R dataset_migration.R dataset_template.R
         object.R saved_query.R shiny.R task.R user.R utils.R vault.R
         zzz.R
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Suggests: testthat, shiny, shinyjs, openssl
 NeedsCompilation: no
-Packaged: 2020-06-24 13:42:57 UTC; davecap
+Packaged: 2020-08-18 11:51:26 UTC; davecap
 Repository: CRAN
-Date/Publication: 2020-06-24 14:30:02 UTC
+Date/Publication: 2020-08-25 06:40:03 UTC

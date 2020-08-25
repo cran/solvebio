@@ -1,12 +1,12 @@
-523a3062b15dafa3f2133ffdf1252597 *DESCRIPTION
+473809ebd888eab2b4edf1035bb64f35 *DESCRIPTION
 37b74b2985bc658faf5e8295400fef17 *LICENSE
 cb0c78dd97dd7f250f6f535d6dcb29de *NAMESPACE
-8e52364a1ebfe4770ef107751e6a3558 *NEWS.md
+f434eba44ed1ef425fd19a5dc03c6b7e *NEWS.md
 b00b99a87808a5230652a1b3c5765141 *R/annotation.R
 7b0d408bdf0bfe064fafb5c1dfa5a250 *R/application.R
 2d7cfb2d6b50816d538f881d76fbd76f *R/beacon.R
 8901f262d1422e57767a3e56d6fb0c58 *R/beacon_set.R
-2e5bc1921f91d5bea743b4f62541678d *R/dataset.R
+1109695306e95e37b70edec26e8ae536 *R/dataset.R
 46887a1e18f6d3be70c74e7bd89f6c39 *R/dataset_commit.R
 afd34cd30b62475d45433f0aa8d0d27a *R/dataset_export.R
 f5a255b2877f61e885c965a7275030f3 *R/dataset_field.R
@@ -15,7 +15,7 @@ d8c07c1416e8f01e4377746778e4e415 *R/dataset_import.R
 0d1a7acdea96686986138ce0cf37113c *R/dataset_template.R
 de56e67c1ea989126e2f01f463f3973c *R/object.R
 f72c7a91fa510f2632d7ee2557cc380b *R/saved_query.R
-2d9a65d0ad1e0da727b6632c60bb0dff *R/shiny.R
+d1ba89fe3d346ffe9715998a32fa3239 *R/shiny.R
 348da96a874b8630368701a2fab8cd6f *R/solvebio.R
 73e0a90a1bad3fb68f13988cbd2f4bcd *R/task.R
 bd5a5d4ca8f51927d0c3807a574704ff *R/user.R
@@ -51,7 +51,7 @@ f84bc5231f875d703f4a814200fc3fb7 *man/Dataset.facets.Rd
 9116d0a3b3f031b290e360ee272cd635 *man/Dataset.fields.Rd
 cb36c7c4cc27b5de3b6b7baf47c1c9d5 *man/Dataset.get_by_full_path.Rd
 ef35c9b9da326ca54184b1166860e6c5 *man/Dataset.get_or_create_by_full_path.Rd
-efe44f4dcbca9b962d63a61c5ba995a8 *man/Dataset.query.Rd
+b9da4fb209cd71ffbb3c09b4c2fa30b4 *man/Dataset.query.Rd
 15730e5933248e73a66d716182077d7d *man/Dataset.retrieve.Rd
 f6a299cb18cf8718e66df1abf420216e *man/Dataset.template.Rd
 dfd21b891a3faf1808891e9b24fa0df9 *man/Dataset.update.Rd
