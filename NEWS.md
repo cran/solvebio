@@ -1,3 +1,10 @@
+# solvebio 2.11.0
+
+* Fix issue with order fields from dataset and file queries
+* Fix issue with mapping field names to titles for dataset queries
+    * This is enabled by default. To disable: `Dataset.query(use_field_titles=FALSE)`
+
+
 # solvebio 2.10.1
 
 * Fix an issue preventing dataset queries in Shiny apps
