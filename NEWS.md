@@ -1,3 +1,11 @@
+# solvebio 2.13.0
+
+* Use `jsonlite::rbind_pages` instead of `dplyr::bind_rows` to combine paginated result
+    * Impacts Global Search results, dataset queries, and file (object) queries
+* Removes dplyr as a dependency
+* Replace `class()` to string comparisons with `inherits()`
+
+
 # solvebio 2.12.1
 
 * Return NULL if Global Beacon doesn't exist on dataset (instead of raising an error)
