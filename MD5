@@ -1,7 +1,7 @@
-18c01141d953227fb3270ea02700073c *DESCRIPTION
+c3a1cb81609b8161049d549f67d3c810 *DESCRIPTION
 37b74b2985bc658faf5e8295400fef17 *LICENSE
-1fce1e5377ec1c5d0730fa93beef86de *NAMESPACE
-8dc3c22d3ff9a3ebbaf382f0114d1bdb *NEWS.md
+7ac84e080db70e99e50d4dc3cc7ea9a4 *NAMESPACE
+b7fc9d29fe81287286ab1c96bcc4d656 *NEWS.md
 b00b99a87808a5230652a1b3c5765141 *R/annotation.R
 7b0d408bdf0bfe064fafb5c1dfa5a250 *R/application.R
 2d7cfb2d6b50816d538f881d76fbd76f *R/beacon.R
@@ -13,7 +13,7 @@ b7609c311b4e98b206892bea2897b707 *R/dataset_field.R
 d8c07c1416e8f01e4377746778e4e415 *R/dataset_import.R
 2fb0b8b594000b1de65ebbc1ad0488ba *R/dataset_migration.R
 0d1a7acdea96686986138ce0cf37113c *R/dataset_template.R
-d3e6c59001505e694c5d644c555ad671 *R/global_search.R
+65952ff1da2aa9d9b6f88ba81f98bd15 *R/global_search.R
 6b3feb167d3c55c69257dc5bdda9e825 *R/object.R
 f72c7a91fa510f2632d7ee2557cc380b *R/saved_query.R
 d1ba89fe3d346ffe9715998a32fa3239 *R/shiny.R
@@ -86,9 +86,11 @@ d6afd87e6a4d51ad42914f1de11dbc9c *man/DatasetTemplate.delete.Rd
 975d8e1b3531d8450c0429c0ed8e84e2 *man/DatasetTemplate.retrieve.Rd
 4e4a31edb53f96ab4b8d3900156b0b7b *man/DatasetTemplate.update.Rd
 9059710aa5aa4e16d972fb9a61db224c *man/Expression.evaluate.Rd
+b02560ccfb8b07cd03ea6ff7093ff572 *man/GlobalSearch.facets.Rd
 492c24f4adc23ac8ef52580466475ee4 *man/GlobalSearch.request.Rd
 01ec52719df8f983c8e8db76f5448342 *man/GlobalSearch.search.Rd
 c6d0ec44b5bbecb1e3346df172da49e6 *man/GlobalSearch.subjects.Rd
+4abbb62d49c0fb4be580e469f4858e60 *man/GlobalSearch.subjects_count.Rd
 62185208ddc89f85b640241c93fc3cda *man/Object.all.Rd
 bff9ecc2cb0468cd967220c57a0838f0 *man/Object.create.Rd
 0ff9c9cd5341185d50e8e47eb5bcae93 *man/Object.data.Rd
