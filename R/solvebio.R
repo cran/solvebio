@@ -34,7 +34,7 @@ if (nchar(.solveEnv$token) == 0L) {
 #' \url{https://docs.solvebio.com/}
 #'
 #' @export
-login <- function(api_key, api_host, env = solvebio:::.solveEnv) {
+login <- function(api_key, api_host, env = .solveEnv) {
     if (!missing(api_key)) {
         assign('token', api_key, envir=env)
     }
@@ -93,7 +93,7 @@ createEnv <- function(token, token_type="Token", host=.solveEnv$host) {
 
 
 # Private API request method.
-.request = function(method, path, query, body, env = solvebio:::.solveEnv, content_type="application/json", ...) {
+.request = function(method, path, query, body, env = .solveEnv, content_type="application/json", ...) {
     'Perform an HTTP request to the server.'
     # Set defaults
     headers <- c(
@@ -101,6 +101,25 @@ createEnv <- function(token, token_type="Token", host=.solveEnv$host) {
                  "Accept-Encoding" = "gzip,deflate",
                  "Content-Type" = content_type
                  )
+
+    # If the domain ends with .solvebio.com, determine if
+    # we are being redirected. If so, update the url with the new host
+    # and log a warning.
+    if (!is.null(env$host) && grepl("\\.solvebio\\.com$", gsub("/$", "", env$host))) {
+        old_host <- gsub("/$", "", env$host)
+        response <- httr::HEAD(old_host, followlocation = TRUE)
+        # Strip the port number from the host for comparison
+        new_host <- gsub(":443$", "", gsub("/$", "", httr::parse_url(response$url)$hostname))
+        # Add "https://" prefix to the host
+        new_host <- paste("https://", new_host, sep="")
+        if (old_host != new_host) {
+            warning(sprintf(
+                            'API host redirected from "%s" to "%s", please update your local credentials file',
+                            old_host, new_host
+                            ))
+            env$host <- new_host
+        }
+    }
 
     if (!is.null(env$token) && nchar(env$token) != 0) {
         headers <- c(
